@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<html>
+        <head>
+            <link rel="stylesheet" href="http://61.215.122.192/thanh/mvc/view/sty.css">
+            <title>新規登録</title></link>
+        </head>
+        <body>
+            <div id="test2">
+                <span class="label1">
+                <h1>新規登録</h1>
+                </span>
+                <span class="label2">
+                  <form method="POST" action="/thanh/mvc/signup/get_list" name="myform" onsubmit="return Check()" onreset="return confirm('リセットしてよろしいですか？')" >
+                  <input type="hidden" name="up" value="" />
+                    <h1 tal:content="error">sample title</h1>
+					名前：（必須）<br />
+                    <input type="text" name="username"
+                      size="30" maxlength="255" 
+                      value="" tal:attributes="value username" placeholder="名前を入力して下さい"/>
+                 <p id="notice_title" style="display: none; color: red;"> </p>
+                  <p>
+                    パスワード：（必須）<br />
+                    <input type="password" name="password"
+                       size="30" maxlength="255"
+                      value="" tal:attributes="value password" placeholder="パスワードを入力して下さい"/>
+                   <p id="notice_memo" style="display: none; color: red;"> </p>
+                  </p>
+                  <p>
+                    パスワードの確認：（必須）<br />
+                    <input type="password" name="passwordauth"
+                       size="30" maxlength="255"
+                      value="" tal:attributes="value password" placeholder="パスワードを再入力して下さい"/>
+                   <p id="notice_memo" style="display: none; color: red;"> </p>
+                  </p>
+                  <p>
+                     <input type="reset" name="reset" value="リセット" />
+                    <input type="submit" name="check" value="内容確認" />
+                <!--<input type="submit" name="delete" value="削除"
+                onclick="return confirm('本当に削除しても良いですか？')" />-->
+                </p>
+                  </form>
+                </span>
+            </div>
+       </body>
+</html>
+
+

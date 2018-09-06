@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://61.215.122.192/thanh/mvc/view/sty.css"></link>
+        <title>簡易スケジュール帳</title>
+        <script language="JavaScript">
+        function Check(){
+            var flag = 0;
+            $er=Number(document . myform . sdate_month . value)*100+Number(document . myform . sdate_day . value);
+            if( document . myform . title . value == "" ){
+                flag = 1;
+                document . getElementById( 'notice_title' ) . style . display = "block";
+            }else{
+                document . getElementById( 'notice_title' ) . style . display = "none";
+            }
+            if( $er > 228&& $er < 232 ){
+                flag = 1;
+                document . getElementById( 'notice_date' ) . style . display = "block";
+            }else{
+                document . getElementById( 'notice_date' ) . style . display = "none";
+            }
+            if( document . myform . memo . value == "" ){
+                flag = 1;
+                document . getElementById( 'notice_memo' ) . style . display = "block";
+            }else{
+                document . getElementById( 'notice_memo' ) . style . display = "none";
+            }
+            if( flag ){
+                window . alert( '必須項目は全て入力して下さい。' );
+                return false;
+            }else{
+                return true;
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <div id="test2">
+            <span class="label1">
+                <h1>新規・変更</h1>
+            </span>
+            <span class="label2">
+              <form method="POST" action="/thanh/mvc/schedule/check/" name="myform" onsubmit="return Check()" onreset="return confirm('リセットしてよろしいですか？')" >
+              <input type="hidden" name="sid" value="" tal:attributes="value row/sid" />
+              <input type="hidden" name="member_id" value="" tal:attributes="value member/id"/>
+              <p>
+				<td tal:content="kaizo">sample title</td>
+                予定名：（必須）<br />
+                <input type="text" name="title"
+                  size="50" maxlength="255" 
+                  value="" tal:attributes="value row/title" placeholder="予定名を入力して下さい" />
+             <p id="notice_title" style="display: none; color: red;"> 【予定名を入力して下さい】</p>
+             </p>
+              <p>
+                日付：<br />
+                <select name="sdate_year">
+                <option tal:repeat="year years" tal:attributes="selected year/selected" tal:content="year/at"></option>
+				</select>年
+				<select name="sdate_month">
+				<option tal:repeat="month months" tal:attributes="selected month/selected" tal:content="month/at"></option>
+				</select>月
+                <select name="sdate_day">
+				<option tal:repeat="day days" tal:attributes="selected day/selected" tal:content="day/at"></option>
+				</select>日
+              </p>
+            <p id="notice_date" style="display: none; color: red;"> 【日付を確認した上、再入力して下さい】</p>
+              <p>
+                開始時間：<br />
+                <select name="stime_hour">
+				<option tal:repeat="hour hours" tal:attributes="selected hour/selected" tal:content="hour/at"></option>
+				</select>時
+                <select name="stime_minute">
+				<option tal:repeat="minute minutes" tal:attributes="selected minute/selected" tal:content="minute/at"></option>
+				</select>分
+              </p>
+              <p>
+                備考：（必須）<br />
+                <input type="text" name="memo"
+                   size="70" maxlength="255"
+                  value="" tal:attributes="value row/memo" placeholder="備考を入力して下さい"/>
+               <p id="notice_memo" style="display: none; color: red;"> 【備考を入力して下さい】</p>
+              </p>
+              <p>
+                 <input type="reset" name="reset" value="リセット" />
+                <input type="submit" name="check" value="内容確認" />
+
+            <!--<input type="submit" name="delete" value="削除"
+              onclick="return confirm('本当に削除しても良いですか？')" />-->
+            </p>
+              </form>
+            </span>
+        </div>
+    </body>
+</html>
+

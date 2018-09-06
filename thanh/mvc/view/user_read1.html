@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://61.215.122.192/thanh/mvc/view/sty.css"></link> 
+        <title>プロフィール</title>
+        <script language="JavaScript">
+        function Check(){
+            var flag = 0;
+            if( document . myform . username . value == "" ){
+                flag = 1;
+                document . getElementById( 'notice_title' ) . style . display = "block";
+            }else{
+                    document . getElementById( 'notice_title' ) . style . display = "none";
+            }
+            if( flag ){
+                window . alert( '必須項目は全て入力して下さい。' );
+                return false;
+            }else{
+                return true;
+            } 
+        }   
+        </script> 
+    </head> 
+    <body>
+        <div id="test2">
+            <span class="label1">
+                <h1>管理</h1> 
+            <span class="new">
+             <td><a href="admin_edit.php">
+                  </a></td></span>
+				<span class="main_table">
+					<table border="1" cellspacing="0" cellpadding="5" bordercolor="#333333">
+					<tr>
+					  <th>番号</th><th>名前</th><th></th>
+					</tr>
+					  <tr>
+					<td tal:content="id"></td>
+					<td tal:content="username"></td>
+					<td><a href="" tal:attributes="href linkid">編集</a></td>
+					</tr>
+					</table>
+				</span>
+			</span>
+        </div>
+    </body>
+</html>
+

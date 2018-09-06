@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://61.215.122.192/thanh/mvc/view/sty.css">  
+        </link>
+        <title>checking</title>
+    </head>
+    <body>
+        <div id="test2">
+            <span class="label1">
+                <h1>確認</h1>
+            </span>
+            <span class="label2">
+              <form method="POST" action="/thanh/mvc/user/update">
+                  <p> 名前：<br /><td tal:content="title1"></td> </p>
+                  <p> パスワード：<br /><td tal:content="pass"></td></p> <p>
+                  <input type="submit" name="update" value="更新" />
+                  <input type="submit" name="delete" value="退会"
+                  onclick="return confirm('本当に削除しても良いですか？')" />
+                  </p>
+              </form>
+              <form method="POST" action="/thanh/mvc/user/edit">
+              <input type="submit" name="return" value="戻る" />
+              </form>
+            </span>
+        </div>
+    </body>
+</html>
+
+

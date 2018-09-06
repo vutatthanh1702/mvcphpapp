@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://61.215.122.192/thanh/mvc/view/sty.css"></link> 
+        <title>管理</title>
+        <script language="JavaScript">
+        function Check(){
+            var flag = 0;
+            if( document . myform . username . value == "" ){
+                flag = 1;
+                document . getElementById( 'notice_title' ) . style . display = "block";
+            }else{
+                    document . getElementById( 'notice_title' ) . style . display = "none";
+            }
+            if( flag ){
+                window . alert( '必須項目は全て入力して下さい。' );
+                return false;
+            }else{
+                return true;
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <div id="test2">
+            <span class="label1">
+                <h1>管理</h1>
+            </span>
+            <span class="search">
+                <!-- searching form -->
+                <form method="POST" action="/thanh/mvc/admin/read/" name="myform"
+                 onsubmit="return Check()" onreset="return confirm('リセットしてよろしいですか？')" >
+                <input type="hidden" name="id"
+                 value="" tal:attributes="" />
+                <p>
+                ユーザー名:（必須）
+                <input type="text" name="username"
+                      size="50" maxlength="150" 
+                      value="" tal:attributes="" placeholder="ユーザー名を入力してください"/>
+                <p id="notice_title" style="display: none; color: red;"> 【ユーザー名を入力して下さい】</p>
+                </p>
+                <p>
+                <input type="reset" name="reset" value="リセット" />
+                <input type="submit" name="check" value="検索" />
+                </p>
+                </form>
+            </span>
+        <!-- searching form-->
+            <span class="new">
+                <td><a href="admin_edit.php">
+                  </a></td>
+			</span>
+				<span class="main_table">
+					<table border="1" cellspacing="0" cellpadding="5" bordercolor="#333333">
+					<tr>
+					  <th>番号</th><th>名前</th><th></th>
+					</tr>
+					<tr tal:repeat="ro row">
+					<td tal:content="ro/id">></td>
+					<td tal:content="ro/username">></td>
+					<td><a href="" tal:attributes="href ro/link">
+					  編集</a></td>
+					  </tr>
+					 </table>
+				<span class="label">
+					<a href="" tal:attributes="href backpage">前</a>
+					<tr tal:repeat="page pag">
+					<a href="" tal:attributes="href page/pagelink"><td tal:content="page/pagecount"></td></a>
+					</tr>
+					<a href="" tal:attributes="href nextpage">次</a>
+				</span>
+				</span>
+        </div>
+    </body>
+</html>
+

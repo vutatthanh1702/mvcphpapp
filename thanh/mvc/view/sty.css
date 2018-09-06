@@ -1,0 +1,90 @@
+ 
+
+
+ #test2 {
+         width: 600px;
+        height: 800px;
+        padding:10px;
+        margin: 20px;
+	vertical-align:middle;
+        background-color:rgba(0,0,0,0.3);
+        border:2px solid orangered;
+        border-radius:10px;
+        opacity:0.7;
+        position: relative;
+       }
+  .label {
+	position: absolute;
+        top: 320;
+ 	left:2;
+	font-size:14px;
+	background-color :rgba(0,0,0,0.4);
+	padding: 2px 4px;
+	color: white;
+ 	border-radius:10px;
+  }
+ .new {
+	top: 220;
+        left:10;
+        position: absolute;
+        font-size:14px;
+        background-color :rgba(0,0,0,0.4);
+        padding: 2px 4px;
+        color: white;
+        border-radius:3px;
+  }
+  .label1 {
+	top:0.01%;
+	left:0.01%;
+	right:0.01%;
+	width: 613px;
+        position: absolute;
+        font-size:7px;
+        background-color :rgba(0,0,0,0.4);
+        padding: 2px 3px 5px 5px;
+        color: white;
+        border-radius:8px 8px 1px 1px;
+  }
+  .label2 {
+	top: 60;
+        left:10;
+        position: absolute;
+  }
+  .main_table {
+        top: 248;
+        left:10;
+        position: absolute;
+  }
+
+ .table {
+        top:450 ;
+        left:10;
+        position: absolute;
+  }
+  .search {
+ 	top: 50;
+        left:10;
+	position: absolute;
+        font-size:14px;
+        background-color :rgba(0,0,0,0.4);
+        padding: 2px 4px;
+        color: white;
+        border-radius:10px;       
+
+}
+  #app {
+        width: 670px;
+        height: 100px;
+        padding:10px;
+        margin: 20px;
+        vertical-align:middle;
+        background-color:rgba(0,0,0,0.3);
+        border:2px solid orangered;
+        border-radius:10px;
+        opacity:0.7;
+        position: relative;
+       }
+ #error{
+    text-align: center;
+    color: red;
+}

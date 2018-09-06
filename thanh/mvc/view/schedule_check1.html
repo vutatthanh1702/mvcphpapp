@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://61.215.122.192/thanh/mvc/view/sty.css"></link>  
+        <title>checking</title>
+    </head>
+    <body>
+        <div id="test2">
+            <span class="label1">
+                <h1>確認</h1>
+            </span>
+            <span class="label2">
+                <form method="POST" action="/thanh/mvc/schedule/update/">
+                <p> 予定名：<br /><td tal:content="title1"></td> </p>
+                <p>日付：<br /><td tal:content="date1"></td></p>
+                <p> 開始時間：<br /><td tal:content="time1"></td></p>
+                <p> 備考：<br /><td tal:content="memo1"></td></p> <p>
+                <input type="submit" name="update" value="更新" />
+                <input type="submit" name="delete" value="削除"
+                onclick="return confirm('本当に削除しても良いですか？')" />
+                </p>
+                </form>
+                <form method="POST" action="/thanh/mvc/schedule/edit/">
+                <input type="submit" name="return" value="戻る" />
+                </form>
+            </span>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://61.215.122.192/thanh/mvc/view/sty.css">
+        <title>簡易スケジュール帳</title></link>
+        <script language="JavaScript">
+        function Check(){
+            var flag = 0;
+            $er=Number(document.myform.sdate_month.value)*100+Number(document.myform.sdate_day.value);
+            if( document.myform.title.value == "" ){
+                flag = 1;
+                document.getElementById( 'notice_title' ).style.display = "block";
+            }else{
+                document.getElementById( 'notice_title' ).style.display = "none";
+            }
+            if( $er > 228&& $er < 232 ){
+                flag = 1;
+                document.getElementById( 'notice_date' ).style.display = "block";
+            }else{
+                document.getElementById( 'notice_date' ).style.display = "none";
+            }
+            if( flag ){
+                window.alert( '必須項目は全て入力して下さい。' );
+                return false;
+            }else{
+                return true;
+            }
+        }
+        </script>
+    </head>
+    <body>
+		こんにちは<b tal:content="logid"></b>さん<br />
+        <form action = "/thanh/mvc/schedule/read/" method="post">
+        <input type="submit" name="out" value="ログアウト">
+        </input>
+        </form>
+        <div id="test2">
+            <span class="label1">
+                <h1>簡易スケジュール帳</h1>
+            </span>
+            <span class="search">
+            <!-- searching form -->
+            <form method="POST" action="/thanh/mvc/schedule/read/" name="myform"
+              onsubmit="return Check()" onreset="return confirm('リセットしてよろしいですか？')" >
+              <input type="hidden" name="sid"
+              value="" tal:attributes="" />
+              <p>
+                日付:（必須）
+               	<select name="sdate_year">
+
+				<option tal:repeat="year years" tal:attributes="selected year/selected" tal:content="year/at"></option>
+<!--				<option tal:content="php:var_dump(year)" ></option>
+				<option tal:repeat="ye year" tal:content="ye/at" ></option>
+				<option tal:define="flg year/0/selected" tal:condition="flg" tal:content="year/0/at" selected="selected"></option>
+-->
+				</select>年
+                <select name="sdate_month">
+                  <option tal:repeat="month months" tal:attributes="selected month/selected" tal:content="month/at"></option></select>月
+                <select name="sdate_day">
+                  <option tal:repeat="day days" tal:attributes="selected day/selected" tal:content="day/at"></option></select>日
+              </p>
+            <p id="notice_date" style="display: none; color: red;"> 【日付を確認した上、再入力して下さい】</p>
+              <p>
+                開始時間:
+                <select name="stime_hour">
+                  <option tal:repeat="hour hours" tal:attributes="selected hour/selected" tal:content="hour/at"></option></select>時
+                <select name="stime_minute">
+                  <option tal:repeat="minute minutes" tal:attributes="selected minute/selected" tal:content="minute/at"></option></select>分
+              </p>
+              <p>
+                予定名:（必須）
+                <input type="text" name="title"
+                  size="50" maxlength="150" 
+                  value="" tal:attributes="" placeholder="予定名を入力して下さい"/>
+             <p id="notice_title" style="display: none; color: red;"> 【予定名を入力して下さい】</p>
+             </p>
+              <p>
+                 <input type="reset" name="reset" value="リセット" />
+                <input type="submit" name="check" value="検索" />
+              </p>
+            </form>
+
+            </span>
+            <!-- searching form-->
+
+            <span class="new">
+             <td><a href="/thanh/mvc/schedule/edit/">
+                  新規</a></td>
+            <td><a href="/thanh/mvc/user/read/">
+                  プロフィール管理</a></td>
+            <td><a href="/thanh/mvc/admin/read/"><td tal:content="admin">sample title</td></a></td>
+            </span>
+            <span class="main_table">
+            <table border="1" cellspacing="0" cellpadding="1.2" bordercolor="#333333">
+            <tr>
+              <th>日付</th><th>時刻</th><th>予定名</th><th>備考</th><th></th>
+            </tr>
+			<tr tal:repeat="ro row">
+				<td tal:content="ro/sdate"></td>
+				<td tal:content="ro/stime"></td>
+				<td tal:content="ro/title"></td>
+				<td tal:content="ro/memo"></td>
+                <td><a href="" tal:attributes="href ro/link">
+                  編集</a></td>
+              </tr>
+		
+		</table>
+		<span class="label">
+			<a href="" tal:attributes="href backpage">前</a>
+			<tr tal:repeat="page pag">
+			<a href="" tal:attributes="href page/pagelink"><td tal:content="page/pagecount"></td></a>
+			</tr>
+			<a href="" tal:attributes="href nextpage">次</a>	
+		</span> 
+			</span>
+		<!--</table>-->
+        </div>
+    </body>
+</html>
+
